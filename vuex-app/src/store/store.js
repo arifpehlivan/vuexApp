@@ -5,7 +5,12 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state:{
-        title:'Vuex '
+        title:'Vuex ',
+        links:[
+            'https://www.google.com',
+            'https://www.youtube.com/',
+            
+        ]
     },
     getters:{
 
