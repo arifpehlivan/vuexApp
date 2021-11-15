@@ -20,9 +20,14 @@ export const store = new Vuex.Store({
     mutations:{
         ADD_LINK:(state,link)=>{
             state.links.push(link)
+        },
+        REMOVE_LINK:(state,link)=>{
+            state.links.splice(link,1)
         }
     },
     actions:{
-
+        deleteLink:(context,link)=>{
+            context.commit("REMOVE_LINK",link)
+        }
     }
 })

@@ -6,7 +6,9 @@
         <input class="link-input" type="text" placeholder="Add Link" v-model="newLink"/>
       </form>
       <ul>
-        <li v-for="(link,index) in links" :key="index">{{link}}</li>
+        <li v-for="(link,index) in links" :key="index">{{link}}
+        <button v-on:click="deleteLinks(index)" class="rm">Delete</button>
+        </li>
       </ul>
     </div>
     <div class="down">
@@ -16,7 +18,7 @@
 </template>
 
 <script>
-import {mapState,mapMutations} from 'vuex';
+import {mapState,mapMutations,mapActions} from 'vuex';
 import LinkCount from './components/LinkCount.vue';
 
 
@@ -46,6 +48,12 @@ export default {
     addLink:function(){
       this.ADD_LINK(this.newLink)
       this.newLink=''
+    },
+    ...mapActions([
+      'deleteLink'
+    ]),
+    deleteLinks:function(link){
+      this.deleteLink(link)
     }
   }
 }
@@ -93,6 +101,16 @@ input{
   box-shadow: 0 5px 5px lightgray;
   margin-bottom: 50px;
   outline: none;
+}
+
+.rm{
+  float: right;
+  text-transform: uppercase;
+  font-size: .8em;
+  background: rgb(182, 9, 9);
+  padding: 5px;
+  color: #5a4304;
+  cursor:pointer;
 }
 
 </style>
