@@ -2,6 +2,9 @@
   <div id="app">
     <div class="up">
       <h2>{{title}}</h2>
+      <form @submit.prevent="addLink">
+        <input class="link-input" type="text" placeholder="Add Link" v-model="newLink"/>
+      </form>
       <ul>
         <li v-for="(link,index) in links" :key="index">{{link}}</li>
       </ul>
@@ -13,12 +16,17 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import {mapState,mapMutations} from 'vuex';
 import LinkCount from './components/LinkCount.vue';
 
 
 export default {
   name: 'App',
+  data(){
+    return{
+      newLink:''
+      }
+  },
   components:{
     LinkCount
   },
@@ -30,6 +38,15 @@ export default {
       'title',
       'links'
     ])
+  },
+  methods:{
+    ...mapMutations([
+      'ADD_LINK'
+    ]),
+    addLink:function(){
+      this.ADD_LINK(this.newLink)
+      this.newLink=''
+    }
   }
 }
 </script>
@@ -67,6 +84,15 @@ ul li{
 .down{
   grid-area: right;
   background-color: #dfc57e;
+}
+
+input{
+  border:none;
+  padding: 20px;
+  width: calc(100%-40px);
+  box-shadow: 0 5px 5px lightgray;
+  margin-bottom: 50px;
+  outline: none;
 }
 
 </style>
