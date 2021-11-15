@@ -42,6 +42,6 @@ button{
     width: 100%;
     border: 1px solid lightgreen;
     outline: 0;
-    cursor: poiter;
+    cursor: pointer;
 }
 </style>
