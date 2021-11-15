@@ -13,7 +13,9 @@ export const store = new Vuex.Store({
         ]
     },
     getters:{
-
+        linkCount:state=>{
+            return state.links.length;
+        }
     },
     mutations:{
 

@@ -7,16 +7,21 @@
       </ul>
     </div>
     <div class="down">
-      
+      <link-count/>
     </div>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex';
+import LinkCount from './components/LinkCount.vue';
+
 
 export default {
   name: 'App',
+  components:{
+    LinkCount
+  },
   // computed:mapState([
   //   'title',
   // ])
