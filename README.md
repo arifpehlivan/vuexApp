@@ -1,2 +1,2 @@
 # vuexApp
-## mapState
+##  mapAction mapGetters mapMutation
